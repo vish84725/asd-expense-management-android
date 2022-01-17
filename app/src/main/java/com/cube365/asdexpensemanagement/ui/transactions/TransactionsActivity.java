@@ -27,6 +27,8 @@ import com.cube365.asdexpensemanagement.ui.custom.LoadingDialog;
 import com.cube365.asdexpensemanagement.utils.Constants;
 import com.cube365.asdexpensemanagement.utils.Helper;
 import com.cube365.asdexpensemanagement.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,7 @@ public class TransactionsActivity extends AppCompatActivity implements Transacti
     protected RecyclerView mRecyclerView;
     protected TransactionsAdaptor mAdapter;
     private TransactionType mTransactionTypeFlag = TransactionType.Income;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,12 +73,15 @@ public class TransactionsActivity extends AppCompatActivity implements Transacti
             mFrameIncomeFilter = (FrameLayout) findViewById(R.id.frameLayout_transactions_incomeFilter);
             mFrameExpenseFilter = (FrameLayout) findViewById(R.id.frameLayout_transactions_expenseFilter);
             mRecyclerView = (RecyclerView)findViewById(R.id.recycleView_transactions);
+            fab = findViewById(R.id.fab);
             return true;
         }catch (Exception ex){
             mAlertDialog.showMessage(ex.getMessage());
         }
         return  false;
     }
+
+
 
     private void setEventListeners(){
         mFrameIncomeFilter.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +99,14 @@ public class TransactionsActivity extends AppCompatActivity implements Transacti
                 if(mTransactionTypeFlag == TransactionType.Expense){
                     toggleFilter(true);
                 }
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
     }

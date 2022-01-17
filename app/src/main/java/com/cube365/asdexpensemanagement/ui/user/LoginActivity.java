@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void startMenuActivity(){
         try{
-            Intent intent = new Intent(this, TransactionsActivity.class);
+            Intent intent = new Intent(this, MenuActivity.class);
             startActivity(intent);
         }catch (Exception ex){
             mAlertDialog.showMessage(ex.getMessage());

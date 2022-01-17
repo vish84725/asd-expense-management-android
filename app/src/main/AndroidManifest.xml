@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.transactions.TransactionsActivity"></activity>
+        <activity android:name=".ui.user.MenuActivity"></activity>
     </application>
 
 

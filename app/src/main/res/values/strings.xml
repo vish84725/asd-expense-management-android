@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AsdExpenseManagement</string>
+    <string name="menu_picklist">TRANSACTIONS</string>
+    <string name="menu_viewstore">CATEGORIES</string>
+    <string name="menu_recieving">MANAGE USER</string>
+    <string name="menu_putaway">BUDGET</string>
 </resources>
