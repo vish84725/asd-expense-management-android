@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+
+    <TextView
+        android:id="@+id/textView_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:textColor="#0005FF"
+        android:textAlignment="center"
+        android:layout_marginTop="100dp"
+        android:textSize="40dp"
+        android:text="Expense Management" />
+
+    <TextView
+        android:id="@+id/textView_subTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:layout_marginTop="5dp"
+        android:textSize="40dp"
+        android:text="Login" />
+
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="40dp"/>
+
+    <!--Username-->
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:text="administrator@localhost"
+        android:textAlignment="center" />
+
+    <!--Password-->
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:text="#Wms123456"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textView_forgotPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:text="forgot your password? Contact your manager"
+        android:textAlignment="center"
+        android:textColor="#757575"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login" />
+
+
+</LinearLayout>
