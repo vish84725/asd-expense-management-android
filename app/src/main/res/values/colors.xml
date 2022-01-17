@@ -7,4 +7,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="wms_gray">#f6f6f6</color>
+    <color name="wms_dark_gray">#DEDEDE</color>
+    <color name="wms_button_gray">#DCDCDE</color>
+    <color name="wms_text_gray">#8C8A8A</color>
+    <color name="wms_blue">#1D2786</color>
+    <color name="wms_green">#59B791</color>
+    <color name="wms_blue_line1">#081168</color>
+    <color name="wms_blue_line2">#4551C9</color>
+    <color name="wms_green_line1">#2A9368</color>
+    <color name="wms_green_line2">#77D3AE</color>
+    <color name="wms_red_line1">#BF3E3E</color>
+    <color name="wms_red_line2">#FE7F7F</color>
+    <color name="wms_yellow_line1">#FAAC27</color>
+    <color name="wms_yellow_line2">#FEE13D</color>
+    <color name="wms_yellow">#FABC60</color>
+    <color name="wms_red">#E16262</color>
 </resources>
