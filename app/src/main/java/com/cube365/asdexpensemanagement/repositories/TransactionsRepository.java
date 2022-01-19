@@ -48,10 +48,10 @@ public class TransactionsRepository {
         isLoading.postValue(true);
     }
 
-    public LiveData<APIResponse<TransactionResponse>> getAllTransactions(Integer userId) {
+    public LiveData<APIResponse<TransactionResponse>> getAllTransactions(Integer userId, String transactionType) {
         onStartCall();
         final MutableLiveData<APIResponse<TransactionResponse>> transactions = new MutableLiveData<>();
-        Call<List<TransactionResponse>> call = transactionService.getAllTransactions(mTokenService.getAccessToken(),userId);
+        Call<List<TransactionResponse>> call = transactionService.getAllTransactions(mTokenService.getAccessToken(),userId,transactionType);
         call.enqueue(new Callback<List<TransactionResponse>>() {
             @Override
             public void onResponse(@NonNull Call<List<TransactionResponse>> call, @NonNull Response<List<TransactionResponse>> response) {

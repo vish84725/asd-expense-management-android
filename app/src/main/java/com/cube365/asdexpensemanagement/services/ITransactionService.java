@@ -17,7 +17,7 @@ import retrofit2.http.Query;
 public interface ITransactionService {
     @GET("/transaction/get-transactions")
     Call<List<TransactionResponse>> getAllTransactions(@Header("Authorization") String token,
-                                                    @Query("userId") Integer userId);
+                                                    @Query("userId") Integer userId, @Query("type") String type);
 
     @POST("/transaction/save-transaction-details")
     Call<CommonResponse> saveTransaction(@Header("Authorization") String token,

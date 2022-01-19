@@ -38,48 +38,26 @@ public class TransactionsAdaptor extends RecyclerView.Adapter<TransactionsAdapto
     public void onBindViewHolder(@NonNull TransactionsAdaptor.ViewHolder holder, int position) {
         try{
 
-//            holder.getTextViewItemCode().setText(mTransactions.get(position).getItemCodeText());
-//            holder.getTextViewItemName().setText(mBinDetails.get(position).getItemDescription());
-//            holder.getTextViewInvoiceId().setText(mBinDetails.get(position).getDocNumberText());
-//            holder.getTextViewPickedQuantity().setText(mBinDetails.get(position).getLastPickQuantityText());
-//            holder.getTextViewQuantity().setText(mBinDetails.get(position).getRecievedQuantityText());
+            holder.getTextViewAmount().setText(mTransactions.get(position).getAmountString());
+            holder.getTextViewTitle().setText(mTransactions.get(position).getDescription());
+            holder.getTextViewNotes().setText(mTransactions.get(position).getNote());
+            holder.getTextViewCategory().setText(mTransactions.get(position).getCategory().getName());
+            holder.getTextViewDate().setText(mTransactions.get(position).getCreateDate().toString());
+            holder.getTextViewRecurring().setText(mTransactions.get(position).getRecurringType());
 
-//            if(mBinDetails.get(position).getChecked()){
-//                holder.getSwitchIsCompleted().setChecked(true);
-//                holder.getSwitchIsCompleted().setEnabled(false);
-//            }else{
-//                holder.getSwitchIsCompleted().setChecked(false);
-//            }
-//
-//            final int blue = holder.getCardViewContainer().getContext().getResources().getColor(R.color.wms_blue);
-//            final int green = holder.getCardViewContainer().getContext().getResources().getColor(R.color.wms_green);
-//            final int yelllow = holder.getCardViewContainer().getContext().getResources().getColor(R.color.wms_yellow);
-//            final int red = holder.getCardViewContainer().getContext().getResources().getColor(R.color.wms_red);
-//            InvoicePickedStatusEnum ss = mBinDetails.get(position).getInvoiceStatus();
-//            switch (mBinDetails.get(position).getInvoiceStatus()){
-//                case COMPLETED:
-//                    holder.getCardViewContainer().setCardBackgroundColor(green);
-//                    holder.getCardViewQtyContainer().setCardBackgroundColor(green);
-//                    holder.getSwitchIsCompleted().setChecked(true);
-//                    holder.getSwitchIsCompleted().setEnabled(false);
-//                    break;
-//                case FLAGGED:
-//                    holder.getCardViewContainer().setCardBackgroundColor(red);
-//                    holder.getCardViewQtyContainer().setCardBackgroundColor(red);
-//                    holder.getSwitchIsCompleted().setEnabled(false);
-//                    holder.getSwitchIsCompleted().setChecked(true);
-//                    break;
-//                case IN_PROGRESS:
-//                    holder.getCardViewContainer().setCardBackgroundColor(yelllow);
-//                    holder.getCardViewQtyContainer().setCardBackgroundColor(yelllow);
-//                    holder.getSwitchIsCompleted().setEnabled(true);
-//                    break;
-//                case INITIAL:
-//                    holder.getCardViewContainer().setCardBackgroundColor(blue);
-//                    holder.getCardViewQtyContainer().setCardBackgroundColor(blue);
-//                    holder.getSwitchIsCompleted().setEnabled(true);
-//                    break;
-//            }
+            final int blue = holder.getCardViewContainer().getContext().getResources().getColor(R.color.wms_blue);
+            final int green = holder.getCardViewContainer().getContext().getResources().getColor(R.color.wms_green);
+            final int yelllow = holder.getCardViewContainer().getContext().getResources().getColor(R.color.wms_yellow);
+            final int red = holder.getCardViewContainer().getContext().getResources().getColor(R.color.wms_red);
+
+            switch (mTransactions.get(position).getTransactionType()){
+                case "INCOME":
+                    holder.getCardViewContainer().setCardBackgroundColor(green);
+                    break;
+                case "EXPENSE":
+                    holder.getCardViewContainer().setCardBackgroundColor(blue);
+                    break;
+            }
 
         }catch (Exception ex){
             Log.d(Constants.ErrorMessage.ERROR_TAG,ex.getMessage());
@@ -88,8 +66,7 @@ public class TransactionsAdaptor extends RecyclerView.Adapter<TransactionsAdapto
 
     @Override
     public int getItemCount() {
-        return 10;
-        //return mTransactions.size();
+        return mTransactions.size();
     }
 
     public TransactionResponse getTransaction(int id) {
@@ -105,7 +82,7 @@ public class TransactionsAdaptor extends RecyclerView.Adapter<TransactionsAdapto
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private final TextView textViewAmount,textViewTitle,textViewNotes,
+        private final TextView textViewAmount,textViewTitle,textViewNotes,textViewRecurring,
                 textViewDate,textViewCategory;
         private final CardView containerView;
         public ViewHolder(View view) {
@@ -115,6 +92,7 @@ public class TransactionsAdaptor extends RecyclerView.Adapter<TransactionsAdapto
             textViewTitle = (TextView) view.findViewById(R.id.textView_transactionTitle);
             textViewNotes = (TextView) view.findViewById(R.id.textView_transactionNote);
             textViewDate = (TextView) view.findViewById(R.id.textView_transationb_date);
+            textViewRecurring = (TextView) view.findViewById(R.id.textView_transactionRecurring);
             textViewCategory = (TextView) view.findViewById(R.id.textView_transaction_category);
 
             containerView = (CardView)view.findViewById(R.id.cardView_container);
@@ -127,6 +105,7 @@ public class TransactionsAdaptor extends RecyclerView.Adapter<TransactionsAdapto
         public TextView getTextViewNotes() { return textViewNotes; }
         public TextView getTextViewDate() { return textViewDate; }
         public TextView getTextViewCategory() { return textViewCategory; }
+        public TextView getTextViewRecurring() { return textViewRecurring; }
 
         public CardView getCardViewContainer() {
             return containerView;

@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cube365.asdexpensemanagement.adaptors.TransactionsAdaptor;
 import com.cube365.asdexpensemanagement.enums.TransactionType;
+import com.cube365.asdexpensemanagement.models.common.APIResponse;
 import com.cube365.asdexpensemanagement.models.transactions.TransactionResponse;
 import com.cube365.asdexpensemanagement.services.ITokenService;
 import com.cube365.asdexpensemanagement.services.TokenService;
@@ -87,8 +88,8 @@ public class TransactionsActivity extends AppCompatActivity implements Transacti
         mFrameIncomeFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mTransactionTypeFlag == TransactionType.Income){
-                    toggleFilter(false);
+                if(mTransactionTypeFlag == TransactionType.Expense){
+                    toggleFilter(true);
                 }
             }
         });
@@ -96,9 +97,10 @@ public class TransactionsActivity extends AppCompatActivity implements Transacti
         mFrameExpenseFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mTransactionTypeFlag == TransactionType.Expense){
-                    toggleFilter(true);
+                if(mTransactionTypeFlag == TransactionType.Income){
+                    toggleFilter(false);
                 }
+
             }
         });
 
@@ -118,32 +120,32 @@ public class TransactionsActivity extends AppCompatActivity implements Transacti
             mFrameIncomeFilter.setBackground(new ColorDrawable(Color.parseColor(Constants.Colors.ASD_BLUE_COLOR)));
         }else{
             mTransactionTypeFlag = TransactionType.Expense;
-            mFrameIncomeFilter.setBackground(new ColorDrawable(Color.parseColor(Constants.Colors.ASD_BLUE_COLOR)));
-            mFrameExpenseFilter.setBackground(new ColorDrawable(Color.parseColor(Constants.Colors.ACTIONBAR_COLOR)));
+            mFrameIncomeFilter.setBackground(new ColorDrawable(Color.parseColor(Constants.Colors.ACTIONBAR_COLOR)));
+            mFrameExpenseFilter.setBackground(new ColorDrawable(Color.parseColor(Constants.Colors.ASD_BLUE_COLOR)));
         }
-//        setPicklistsData();
+        setTransactionsData();
     }
 
-//    private void setActivityLoader(){
-//        viewModel.getLoadingStatusLiveData().observe(this, new Observer<Boolean>() {
-//            @Override
-//            public void onChanged(Boolean isLoading) {
-//                if(isLoading != null){
-//                    if(isLoading){
-//                        loadingDialog.startLoadingDialog();
-//                    }else{
-//                        loadingDialog.dismissLoadingDialog();
-//                    }
-//                }else{
-//                    loadingDialog.dismissLoadingDialog();
-//                }
-//            }
-//        });
-//    }
+    private void setActivityLoader(){
+        viewModel.getLoadingStatusLiveData().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isLoading) {
+                if(isLoading != null){
+                    if(isLoading){
+                        loadingDialog.startLoadingDialog();
+                    }else{
+                        loadingDialog.dismissLoadingDialog();
+                    }
+                }else{
+                    loadingDialog.dismissLoadingDialog();
+                }
+            }
+        });
+    }
 
     private void loadData(){
         try{
-//            setActivityLoader();
+            setActivityLoader();
             setData();
         }catch (Exception ex){
             mAlertDialog.showMessage(ex.getMessage());
@@ -151,37 +153,43 @@ public class TransactionsActivity extends AppCompatActivity implements Transacti
 
     }
 
-//    private void setPicklistsData(){
-//        viewModel.getPicklistsData(this.mPicklistStatusFlag).observe(this, new Observer<APIResponse<PicklistResponse>>() {
-//            @Override
-//            public void onChanged(APIResponse<PicklistResponse> apiResponse) {
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        if (apiResponse == null) {
-//                            mAlertDialog.showMessage(Constants.ErrorMessage.GENERAL_MESSAGE);
-//                            return;
-//                        }
-//                        if (apiResponse.getError() == null) {
-//                            if(apiResponse.getData() != null){
-//                                pickListsData.clear();
-//                                pickListsData.addAll(apiResponse.getData());
-//                                mAdapter.notifyDataSetChanged();
-//                            }
-//                            Log.i(TAG, "Data response is " + apiResponse.getData());
-//                        } else {
-//                            Throwable e = apiResponse.getError();
-//                            mAlertDialog.showMessage(e.getMessage());
-//                            Log.e(TAG, "Error is " + e.getLocalizedMessage());
-//                        }
-//                    }
-//                });
-//            }
-//        });
-//    }
+    private void setTransactionsData(){
+        String transactionType = "INCOME";
+        if(mTransactionTypeFlag == TransactionType.Income){
+            transactionType = "INCOME";
+        }else if(mTransactionTypeFlag == TransactionType.Expense){
+            transactionType = "EXPENSE";
+        }
+        viewModel.getAllTransactions(1,transactionType).observe(this, new Observer<APIResponse<TransactionResponse>>() {
+            @Override
+            public void onChanged(APIResponse<TransactionResponse> apiResponse) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (apiResponse == null) {
+                            mAlertDialog.showMessage(Constants.ErrorMessage.GENERAL_MESSAGE);
+                            return;
+                        }
+                        if (apiResponse.getError() == null) {
+                            if(apiResponse.getData() != null){
+                                transationsData.clear();
+                                transationsData.addAll(apiResponse.getData());
+                                mAdapter.notifyDataSetChanged();
+                            }
+                            Log.i(TAG, "Data response is " + apiResponse.getData());
+                        } else {
+                            Throwable e = apiResponse.getError();
+                            mAlertDialog.showMessage(e.getMessage());
+                            Log.e(TAG, "Error is " + e.getLocalizedMessage());
+                        }
+                    }
+                });
+            }
+        });
+    }
 
     private void setData(){
-//        setPicklistsData();
+        setTransactionsData();
         setupRecyclerView();
     }
 

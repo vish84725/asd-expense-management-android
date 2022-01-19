@@ -1,7 +1,7 @@
 package com.cube365.asdexpensemanagement.utils;
 
 public class Constants {
-    public static final String BASE_URL = "http://192.168.1.211:6060";
+    public static final String BASE_URL = "http://expensemanagementapp-env.eba-zn6m8awy.us-east-2.elasticbeanstalk.com";
 
     public static final String APP_NAME = "ExpenseManagement";
     public static final String AUTHORIZATION_TOKEN = "TOKEN";

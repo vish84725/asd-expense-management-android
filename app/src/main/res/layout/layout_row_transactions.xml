@@ -44,7 +44,7 @@
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_marginTop="5dp"
-                    android:text="Weekend Shopping"
+                    android:text="--"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,7 +57,7 @@
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_marginTop="5dp"
-                    android:text="1500.00LKR"
+                    android:text="--"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf ="@+id/textView_transactionTitle" />
 
@@ -70,9 +70,22 @@
                     android:textStyle="normal"
                     android:textSize="16sp"
                     android:layout_marginTop="5dp"
-                    android:text="This is just an note to describe the transaction tyhat has been done int the earlier stage og the development lifecuycke"
+                    android:text="--"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf ="@+id/textView_transactionAmount" />
+
+                <!--Recurring -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_transactionRecurring"
+                    android:textColor="@color/wms_yellow"
+                    android:textStyle="normal"
+                    android:textSize="16sp"
+                    android:layout_marginTop="5dp"
+                    android:text="--"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf ="@+id/textView_transactionNote" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -82,7 +95,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_transactionNote"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_transactionRecurring"
                     app:layout_constraintVertical_bias="1.0">
 
                     <!--Left Compartment-->

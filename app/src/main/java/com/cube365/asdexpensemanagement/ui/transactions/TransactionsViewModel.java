@@ -49,8 +49,8 @@ public class TransactionsViewModel  extends AndroidViewModel {
         return apiObjectResponseLiveData;
     }
 
-    public LiveData<APIResponse<TransactionResponse>> getAllTransactions(Integer userId) {
-        final LiveData<APIResponse<TransactionResponse>> apiObjectResponseLiveData = transactionsRepository.getAllTransactions(userId);
+    public LiveData<APIResponse<TransactionResponse>> getAllTransactions(Integer userId, String transactionType) {
+        final LiveData<APIResponse<TransactionResponse>> apiObjectResponseLiveData = transactionsRepository.getAllTransactions(userId,transactionType);
         apiObjectResponseLiveData.observeForever(new Observer<APIResponse<TransactionResponse>>(){
             @Override
             public void onChanged(APIResponse<TransactionResponse> apiResponse) {
