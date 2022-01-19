@@ -13,4 +13,36 @@ public class TransactionResponse  implements Serializable {
     @SerializedName("amount")
     @Expose
     private Double amount;
+
+    @SerializedName("recurringType")
+    @Expose
+    private String recurringType;
+
+    @SerializedName("transactionType")
+    @Expose
+    private String transactionType;
+
+    @SerializedName("createDate")
+    @Expose
+    private String createDate;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public String getRecurringType() {
+        return recurringType;
+    }
+
+    public String getTransactionType() {
+        return transactionType;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
 }
