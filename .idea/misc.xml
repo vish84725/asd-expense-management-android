@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_add_category.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_add_transaction.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/activity_alert_dialog.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/activity_categories.xml" value="0.1921875" />

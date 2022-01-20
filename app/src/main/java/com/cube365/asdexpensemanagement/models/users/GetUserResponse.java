@@ -29,4 +29,8 @@ public class GetUserResponse implements Serializable {
     public String getPassword() {
         return password;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

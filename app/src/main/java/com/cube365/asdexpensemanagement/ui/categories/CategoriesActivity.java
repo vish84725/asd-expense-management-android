@@ -52,7 +52,7 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesA
         updateUI();
         if(init()){
             loadData();
-//            setEventListeners();
+            setEventListeners();
         }
 
     }
@@ -60,7 +60,7 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesA
     @Override
     public void onRestart() {
         super.onRestart();
-//        setPicklistsData();
+        setCategoriesData();
     }
 
     private boolean init(){
@@ -85,7 +85,7 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesA
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddTransactionsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AddCategoryActivity.class);
                 startActivity(intent);
             }
         });
