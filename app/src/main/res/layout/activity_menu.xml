@@ -100,8 +100,9 @@
                         android:layout_height="match_parent">
                         <ImageView
                             android:layout_width="match_parent"
-                            android:adjustViewBounds="false"
+                            android:layout_height="match_parent"
                             android:layout_margin="15dp"
+                            android:adjustViewBounds="false"
                             android:scaleType="fitCenter"
                             android:src="@drawable/ic_putaway"
                             android:layout_height="match_parent"/>

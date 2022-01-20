@@ -20,7 +20,7 @@ import com.cube365.asdexpensemanagement.R;
 
 public class MenuActivity extends AppCompatActivity {
     AlertMessageDialog mAlertDialog;
-    FrameLayout frameLayoutViewStores,frameLayoutPicklists,frameLayoutPutaway,frameLayoutReceiving;
+    FrameLayout frameLayoutTransactions,frameLayoutCategories,frameLayoutBudget,frameLayoutUsers;
     ITokenService tokenService;
 
     @Override
@@ -41,7 +41,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void setEventListeners(){
-        frameLayoutPicklists.setOnClickListener(new View.OnClickListener() {
+        frameLayoutTransactions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), TransactionsActivity.class);
@@ -49,7 +49,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        frameLayoutViewStores.setOnClickListener(new View.OnClickListener() {
+        frameLayoutCategories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CategoriesActivity.class);
@@ -57,7 +57,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        frameLayoutPutaway.setOnClickListener(new View.OnClickListener() {
+        frameLayoutBudget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ViewBudgetActivity.class);
@@ -65,7 +65,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        frameLayoutReceiving.setOnClickListener(new View.OnClickListener() {
+        frameLayoutUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Intent intent = new Intent(getApplicationContext(), ReceivingActivity.class);
@@ -78,10 +78,10 @@ public class MenuActivity extends AppCompatActivity {
         try {
             mAlertDialog = new AlertMessageDialog(this);
             tokenService = new TokenService(this);
-            frameLayoutViewStores = (FrameLayout) findViewById(R.id.frameLayout_stockview);
-            frameLayoutPicklists = (FrameLayout) findViewById(R.id.frameLayout_picklists);
-            frameLayoutPutaway = (FrameLayout) findViewById(R.id.frameLayout_putaway);
-            frameLayoutReceiving = (FrameLayout) findViewById(R.id.frameLayout_recieving);
+            frameLayoutTransactions = (FrameLayout) findViewById(R.id.frameLayout_transactions);
+            frameLayoutCategories = (FrameLayout) findViewById(R.id.frameLayout_categories);
+            frameLayoutBudget = (FrameLayout) findViewById(R.id.frameLayout_budget);
+            frameLayoutUsers = (FrameLayout) findViewById(R.id.frameLayout_users);
 
             return true;
         }catch (Exception ex){
