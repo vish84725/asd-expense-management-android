@@ -24,6 +24,8 @@
         <activity android:name=".ui.categories.CategoriesActivity"></activity>
         <activity android:name=".ui.transactions.AddTransactionsActivity"></activity>
         <activity android:name=".ui.categories.AddCategoryActivity"></activity>
+        <activity android:name=".ui.transactions.ManageBudgetActivity"></activity>
+        <activity android:name=".ui.transactions.ViewBudgetActivity"></activity>
     </application>
 
 

@@ -10,6 +10,8 @@ import com.cube365.asdexpensemanagement.models.common.APIObjectResponse;
 import com.cube365.asdexpensemanagement.models.common.APIResponse;
 import com.cube365.asdexpensemanagement.models.common.CommonResponse;
 import com.cube365.asdexpensemanagement.models.transactions.CreateTransactionPostRequest;
+import com.cube365.asdexpensemanagement.models.transactions.GetBudgetResponse;
+import com.cube365.asdexpensemanagement.models.transactions.PostBudgetRequest;
 import com.cube365.asdexpensemanagement.models.transactions.TransactionResponse;
 import com.cube365.asdexpensemanagement.network.RetrofitClient;
 import com.cube365.asdexpensemanagement.services.ITokenService;
@@ -73,10 +75,60 @@ public class TransactionsRepository {
         return transactions;
     }
 
+    public LiveData<APIResponse<GetBudgetResponse>> getBudgets(Integer userId) {
+        onStartCall();
+        final MutableLiveData<APIResponse<GetBudgetResponse>> budgets = new MutableLiveData<>();
+        Call<List<GetBudgetResponse>> call = transactionService.getBudgetsForCategories(mTokenService.getAccessToken(),userId);
+        call.enqueue(new Callback<List<GetBudgetResponse>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<GetBudgetResponse>> call, @NonNull Response<List<GetBudgetResponse>> response) {
+                if (response.isSuccessful()) {
+                    budgets.postValue(new APIResponse<GetBudgetResponse>(response.body()));
+                }else{
+                    budgets.postValue(new APIResponse<GetBudgetResponse>(new Exception(response.message())));
+                }
+                onFinishCall();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<GetBudgetResponse>> call, @NonNull Throwable t) {
+                budgets.postValue(new APIResponse<GetBudgetResponse>(t));
+                onFinishCall();
+            }
+        });
+
+        return budgets;
+    }
+
     public LiveData<APIObjectResponse<CommonResponse>> saveTransaction(CreateTransactionPostRequest request) {
         onStartCall();
         final MutableLiveData<APIObjectResponse<CommonResponse>> resp = new MutableLiveData<>();
         Call<CommonResponse> call = transactionService.saveTransaction(mTokenService.getAccessToken(),request);
+        call.enqueue(new Callback<CommonResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<CommonResponse> call, @NonNull Response<CommonResponse> response) {
+                if (response.isSuccessful()) {
+                    resp.postValue(new APIObjectResponse<CommonResponse>(response.body()));
+                }else{
+                    resp.postValue(new APIObjectResponse<CommonResponse>(new Exception(response.message())));
+                }
+                onFinishCall();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<CommonResponse> call, @NonNull Throwable t) {
+                resp.postValue(new APIObjectResponse<CommonResponse>(t));
+                onFinishCall();
+            }
+        });
+
+        return resp;
+    }
+
+    public LiveData<APIObjectResponse<CommonResponse>> setBudget(PostBudgetRequest request) {
+        onStartCall();
+        final MutableLiveData<APIObjectResponse<CommonResponse>> resp = new MutableLiveData<>();
+        Call<CommonResponse> call = transactionService.saveBudget(mTokenService.getAccessToken(),request);
         call.enqueue(new Callback<CommonResponse>() {
             @Override
             public void onResponse(@NonNull Call<CommonResponse> call, @NonNull Response<CommonResponse> response) {

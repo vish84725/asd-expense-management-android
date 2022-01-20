@@ -11,7 +11,9 @@ import com.cube365.asdexpensemanagement.services.ITokenService;
 import com.cube365.asdexpensemanagement.services.TokenService;
 import com.cube365.asdexpensemanagement.ui.categories.CategoriesActivity;
 import com.cube365.asdexpensemanagement.ui.custom.AlertMessageDialog;
+import com.cube365.asdexpensemanagement.ui.transactions.ManageBudgetActivity;
 import com.cube365.asdexpensemanagement.ui.transactions.TransactionsActivity;
+import com.cube365.asdexpensemanagement.ui.transactions.ViewBudgetActivity;
 import com.cube365.asdexpensemanagement.utils.Constants;
 import com.cube365.asdexpensemanagement.utils.Helper;
 import com.cube365.asdexpensemanagement.R;
@@ -58,8 +60,8 @@ public class MenuActivity extends AppCompatActivity {
         frameLayoutPutaway.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), PutawayActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), ViewBudgetActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -14,6 +14,8 @@ import com.cube365.asdexpensemanagement.models.common.APIObjectResponse;
 import com.cube365.asdexpensemanagement.models.common.APIResponse;
 import com.cube365.asdexpensemanagement.models.common.CommonResponse;
 import com.cube365.asdexpensemanagement.models.transactions.CreateTransactionPostRequest;
+import com.cube365.asdexpensemanagement.models.transactions.GetBudgetResponse;
+import com.cube365.asdexpensemanagement.models.transactions.PostBudgetRequest;
 import com.cube365.asdexpensemanagement.models.transactions.TransactionResponse;
 import com.cube365.asdexpensemanagement.repositories.TransactionsRepository;
 
@@ -60,8 +62,30 @@ public class TransactionsViewModel  extends AndroidViewModel {
         return apiObjectResponseLiveData;
     }
 
+    public LiveData<APIResponse<GetBudgetResponse>> getAllBugets(Integer userId) {
+        final LiveData<APIResponse<GetBudgetResponse>> apiObjectResponseLiveData = transactionsRepository.getBudgets(userId);
+        apiObjectResponseLiveData.observeForever(new Observer<APIResponse<GetBudgetResponse>>(){
+            @Override
+            public void onChanged(APIResponse<GetBudgetResponse> apiResponse) {
+                apiObjectResponseLiveData.removeObserver(this);
+            }
+        });
+        return apiObjectResponseLiveData;
+    }
+
     public LiveData<APIObjectResponse<CommonResponse>> createTransaction(CreateTransactionPostRequest request) {
         final LiveData<APIObjectResponse<CommonResponse>> apiObjectResponseLiveData = transactionsRepository.saveTransaction(request);
+        apiObjectResponseLiveData.observeForever(new Observer<APIObjectResponse<CommonResponse>>(){
+            @Override
+            public void onChanged(APIObjectResponse<CommonResponse> apiResponse) {
+                apiObjectResponseLiveData.removeObserver(this);
+            }
+        });
+        return apiObjectResponseLiveData;
+    }
+
+    public LiveData<APIObjectResponse<CommonResponse>> setBudget(PostBudgetRequest request) {
+        final LiveData<APIObjectResponse<CommonResponse>> apiObjectResponseLiveData = transactionsRepository.setBudget(request);
         apiObjectResponseLiveData.observeForever(new Observer<APIObjectResponse<CommonResponse>>(){
             @Override
             public void onChanged(APIObjectResponse<CommonResponse> apiResponse) {
