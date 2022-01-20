@@ -17,6 +17,7 @@ public class Constants {
         public static final String MAIN_MENU = "MENU";
         public static final String PICKLIST_ACTIVITY = "PICK LISTS";
         public static final String TRANSACTIONS_ACTIVITY = "TRANSACTIONS";
+        public static final String CATEGORIES_ACTIVITY = "CATEGORIES";
         public static final String ADD_TRANSACTIONS_ACTIVITY = "ADD TRANSACTION";
         public static final String PUTAWAY_ACTIVITY = "PUTAWAY";
         public static final String RECEIVING_ACTIVITY = "RECEIVING";

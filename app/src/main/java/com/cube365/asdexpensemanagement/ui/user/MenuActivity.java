@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.cube365.asdexpensemanagement.services.ITokenService;
 import com.cube365.asdexpensemanagement.services.TokenService;
+import com.cube365.asdexpensemanagement.ui.categories.CategoriesActivity;
 import com.cube365.asdexpensemanagement.ui.custom.AlertMessageDialog;
 import com.cube365.asdexpensemanagement.ui.transactions.TransactionsActivity;
 import com.cube365.asdexpensemanagement.utils.Constants;
@@ -49,8 +50,8 @@ public class MenuActivity extends AppCompatActivity {
         frameLayoutViewStores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), StockViewActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), CategoriesActivity.class);
+                startActivity(intent);
             }
         });
 
