@@ -29,7 +29,7 @@ public interface ITransactionService {
     Call<List<GetBudgetResponse>> getBudgetsForCategories(@Header("Authorization") String token,
                                                           @Query("userId") Integer userId);
 
-    @POST("/budget/save-budget")
+    @POST("/budget/save-budget-details")
     Call<CommonResponse> saveBudget(@Header("Authorization") String token,
                                          @Body() PostBudgetRequest request);
 

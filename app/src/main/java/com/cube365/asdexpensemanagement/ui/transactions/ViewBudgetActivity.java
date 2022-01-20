@@ -85,7 +85,7 @@ public class ViewBudgetActivity extends AppCompatActivity implements BudgetAdapt
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddTransactionsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ManageBudgetActivity.class);
                 startActivity(intent);
             }
         });
