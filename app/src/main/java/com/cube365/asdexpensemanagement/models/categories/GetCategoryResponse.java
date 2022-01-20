@@ -38,4 +38,8 @@ public class GetCategoryResponse implements Serializable {
     public GetUserResponse getUser() {
         return user;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

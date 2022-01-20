@@ -61,7 +61,7 @@ public class TransactionsActivity extends AppCompatActivity implements Transacti
     @Override
     public void onRestart() {
         super.onRestart();
-//        setPicklistsData();
+        setTransactionsData();
     }
 
     private boolean init(){

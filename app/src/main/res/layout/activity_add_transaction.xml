@@ -35,6 +35,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/addTr_title"
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -45,7 +46,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-
                 android:hint="Amount"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +53,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/addTr_amount"
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -72,6 +73,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/addTr_notes"
                     android:lines="5" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -85,26 +87,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textField_addTransaction_note">
-
-                <LinearLayout
+                <RadioButton
+                    android:id="@+id/radio_button_income"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_weight="0.5"
+                    android:text="Income" />
 
-                    <RadioButton
-                        android:id="@+id/radio_button_income"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:text="Income" />
-
-                    <RadioButton
-                        android:id="@+id/radio_button_expense"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:text="Expense" />
-                </LinearLayout>
+                <RadioButton
+                    android:id="@+id/radio_button_expense"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:text="Expense" />
 
             </RadioGroup>
 
@@ -114,7 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="2020-10-20"
+                android:text="--"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/button_addTransaction_date"
                 app:layout_constraintStart_toStartOf="parent"

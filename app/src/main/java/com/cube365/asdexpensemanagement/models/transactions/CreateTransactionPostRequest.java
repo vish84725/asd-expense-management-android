@@ -9,6 +9,14 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class CreateTransactionPostRequest implements Serializable {
+    @SerializedName("description")
+    @Expose
+    private String description;
+
+    @SerializedName("note")
+    @Expose
+    private String note;
+
     @SerializedName("amount")
     @Expose
     private Double amount;
@@ -23,7 +31,7 @@ public class CreateTransactionPostRequest implements Serializable {
 
     @SerializedName("createDate")
     @Expose
-    private Date createDate;
+    private String createDate;
 
     @SerializedName("category")
     @Expose
@@ -33,7 +41,9 @@ public class CreateTransactionPostRequest implements Serializable {
     @Expose
     private GetUserResponse user;
 
-    public CreateTransactionPostRequest(Double amount, String recurringType, String transactionType, Date createDate, GetCategoryResponse category, GetUserResponse user) {
+    public CreateTransactionPostRequest(String description, String note, Double amount, String recurringType, String transactionType, String createDate, GetCategoryResponse category, GetUserResponse user) {
+        this.description = description;
+        this.note = note;
         this.amount = amount;
         this.recurringType = recurringType;
         this.transactionType = transactionType;
