@@ -41,12 +41,17 @@ public class BudgetAdaptor extends RecyclerView.Adapter<BudgetAdaptor.ViewHolder
             holder.getTextViewName().setText(mBudgets.get(position).getCategoryName());
             holder.getTextViewTotalBudget().setText(mBudgets.get(position).getBudgetAmount().toString());
             holder.getTextViewTotalTransactions().setText(mBudgets.get(position).getTransactionAmount().toString());
+            final int red = holder.getCardViewContainer().getContext().getResources().getColor(R.color.wms_red);
+            if(Float.parseFloat(mBudgets.get(position).getTransactionAmount().toString()) >= Float.parseFloat(mBudgets.get(position).getBudgetAmount().toString())){
+                holder.getSliderBudget().setValue(Float.parseFloat(mBudgets.get(position).getBudgetAmount().toString()));
+                holder.getCardViewContainer().setCardBackgroundColor(red);
+            }else{
+                holder.getSliderBudget().setValue(Float.parseFloat(mBudgets.get(position).getTransactionAmount().toString()));
+            }
 
-            holder.getSliderBudget().setValue(Float.parseFloat(mBudgets.get(position).getTransactionAmount().toString()));
             holder.getSliderBudget().setValueFrom(0);
             holder.getSliderBudget().setValueTo(Float.parseFloat(mBudgets.get(position).getBudgetAmount().toString()));
 
-            final int red = holder.getCardViewContainer().getContext().getResources().getColor(R.color.wms_red);
             final int green = holder.getCardViewContainer().getContext().getResources().getColor(R.color.wms_green);
 
             if(mBudgets.get(position).getTransactionAmount().equals(mBudgets.get(position).getBudgetAmount())){
