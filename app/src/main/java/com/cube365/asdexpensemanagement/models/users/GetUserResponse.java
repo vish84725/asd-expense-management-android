@@ -33,4 +33,5 @@ public class GetUserResponse implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
+
 }
