@@ -57,22 +57,31 @@
         android:text="#Wms123456"
         android:textAlignment="center" />
 
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/wms_green"
+        android:layout_height="wrap_content"
+        android:text="Login" />
+
     <TextView
         android:id="@+id/textView_forgotPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@color/white"
-        android:text="forgot your password? Contact your manager"
+        android:text="does not have an account already? Register here "
         android:textAlignment="center"
-        android:textColor="#757575"
+        android:textColor="@color/wms_red"
         android:textSize="10dp" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:text="Register" />
+
+
 
 
 </LinearLayout>

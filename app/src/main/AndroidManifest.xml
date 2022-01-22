@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".ui.transactions.TransactionsActivity"></activity>
         <activity android:name=".ui.user.MenuActivity"></activity>
+        <activity android:name=".ui.user.RegisterActivity"></activity>
         <activity android:name=".ui.categories.CategoriesActivity"></activity>
         <activity android:name=".ui.transactions.AddTransactionsActivity"></activity>
         <activity android:name=".ui.categories.AddCategoryActivity"></activity>

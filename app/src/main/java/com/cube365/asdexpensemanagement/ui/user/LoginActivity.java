@@ -20,7 +20,7 @@ import com.cube365.asdexpensemanagement.ui.transactions.TransactionsActivity;
 public class LoginActivity extends AppCompatActivity {
 //    private UserViewModel viewModel;
     EditText editTextUsername,editTextPassword;
-    Button buttonLogin;
+    Button buttonLogin,buttonRegister;
     LoadingDialog loadingDialog;
     ITokenService tokenService;
     AlertMessageDialog mAlertDialog;
@@ -29,10 +29,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         updateUI();
         if(init()){
-//            loadData();
             updateUI();
 
-//            autoLogin();
+            buttonRegister.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startRegisterActivity();
+                }
+            });
 
             buttonLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -65,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
             editTextUsername = findViewById(R.id.editTextUsername);
             editTextPassword = findViewById(R.id.editTextPassword);
             buttonLogin = findViewById(R.id.buttonLogin);
+            buttonRegister = findViewById(R.id.buttonRegister);
             loadingDialog = new LoadingDialog(LoginActivity.this);
             return true;
         }catch (Exception ex){
@@ -75,6 +80,16 @@ public class LoginActivity extends AppCompatActivity {
     private void startMenuActivity(){
         try{
             Intent intent = new Intent(this, MenuActivity.class);
+            startActivity(intent);
+        }catch (Exception ex){
+            mAlertDialog.showMessage(ex.getMessage());
+        }
+
+    }
+
+    private void startRegisterActivity(){
+        try{
+            Intent intent = new Intent(this, RegisterActivity.class);
             startActivity(intent);
         }catch (Exception ex){
             mAlertDialog.showMessage(ex.getMessage());
