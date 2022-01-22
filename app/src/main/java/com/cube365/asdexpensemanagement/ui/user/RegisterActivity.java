@@ -27,6 +27,7 @@ import com.cube365.asdexpensemanagement.services.TokenService;
 import com.cube365.asdexpensemanagement.ui.custom.AlertMessageDialog;
 import com.cube365.asdexpensemanagement.ui.custom.LoadingDialog;
 import com.cube365.asdexpensemanagement.utils.Constants;
+import com.cube365.asdexpensemanagement.utils.Helper;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.DateFormat;
@@ -56,12 +57,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void updateUI(){
         try{
-            requestWindowFeature(Window.FEATURE_NO_TITLE);
-            getSupportActionBar().hide();
-
+            Helper.setAppBar(getSupportActionBar(), Constants.ActivityTitles.REGISTER_ACTIVITTY,false);
             setContentView(R.layout.activity_register_user);
         }catch (Exception ex){
-
         }
     }
 

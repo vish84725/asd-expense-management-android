@@ -15,6 +15,7 @@ public class Constants {
 
     public class ActivityTitles {
         public static final String MAIN_MENU = "MENU";
+        public static final String REGISTER_ACTIVITTY = "REGISTER";
         public static final String PICKLIST_ACTIVITY = "PICK LISTS";
         public static final String TRANSACTIONS_ACTIVITY = "TRANSACTIONS";
         public static final String VIEW_BUDGET_ACTIVITY = "VIEW BUDGETS";
