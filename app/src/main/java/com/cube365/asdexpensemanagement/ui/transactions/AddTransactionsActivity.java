@@ -197,7 +197,7 @@ public class AddTransactionsActivity extends AppCompatActivity{
                 if(validateInputFields()){
                     saveTransaction();
                 }else{
-                    mAlertDialog.showMessage("Title is required");
+                    mAlertDialog.showMessage("All inputs are required");
                 }
             }
         });
@@ -236,25 +236,37 @@ public class AddTransactionsActivity extends AppCompatActivity{
     }
 
     private Boolean validateInputFields(){
-        if(mTitleAmount.getText() == null || mTitleAmount.getText().toString().equals("")){
+        try{
+            if(mTitleAmount.getText() == null || mTitleAmount.getText().toString().equals("")){
+                return false;
+            }
+            if(mTitleAmount.getText() != null && !mTitleAmount.getText().toString().equals("")){
+                if(Double.parseDouble(mTitleAmount.getText().toString()) <= 0 ){
+                    mAlertDialog.showMessage("Amount should be a number");
+                    return false;
+                }
+            }
+            if(mTitleInput.getText() == null || mTitleInput.getText().toString().equals("")){
+                return false;
+            }
+            if(mTitleNotes.getText() == null || mTitleNotes.getText().toString().equals("")){
+                return false;
+            }
+            if(selectedDate == null){
+                return false;
+            }
+            if(mSelectedRecurringType == null){
+                return false;
+            }
+            if(mSelectedCategory == null){
+                return false;
+            }
+            return true;
+        }catch (NumberFormatException ex){
+            mAlertDialog.showMessage("Amount should be a number");
             return false;
         }
-        if(mTitleInput.getText() == null || mTitleInput.getText().toString().equals("")){
-            return false;
-        }
-        if(mTitleNotes.getText() == null || mTitleNotes.getText().toString().equals("")){
-            return false;
-        }
-        if(selectedDate == null){
-            return false;
-        }
-        if(mSelectedRecurringType == null){
-            return false;
-        }
-        if(mSelectedCategory == null){
-            return false;
-        }
-        return true;
+
     }
 
     private CreateTransactionPostRequest getCreateRequest(){
@@ -266,7 +278,7 @@ public class AddTransactionsActivity extends AppCompatActivity{
             GetCategoryResponse category = new GetCategoryResponse();
             category.setId(mSelectedCategory.getId());
             GetUserResponse user = new GetUserResponse();
-            user.setId(1);
+            user.setId(tokenService.getLoggedInUser().getId());
             int selectedId = mTransactionTypeRadioGroup.getCheckedRadioButtonId();
             RadioButton radioButton = (RadioButton) findViewById(selectedId);
             String transactionType = radioButton.getText().toString().toUpperCase(Locale.ROOT);
@@ -291,7 +303,7 @@ public class AddTransactionsActivity extends AppCompatActivity{
     }
 
     private void setCategoriesData(){
-        categoriesViewModel.getAllCategories(1).observe(this, new Observer<APIResponse<GetCategoryResponse>>() {
+        categoriesViewModel.getAllCategories(tokenService.getLoggedInUser().getId()).observe(this, new Observer<APIResponse<GetCategoryResponse>>() {
             @Override
             public void onChanged(APIResponse<GetCategoryResponse> apiResponse) {
                 runOnUiThread(new Runnable() {

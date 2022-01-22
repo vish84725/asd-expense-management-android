@@ -119,7 +119,7 @@ public class ViewBudgetActivity extends AppCompatActivity implements BudgetAdapt
     }
 
     private void setBudgetData(){
-        viewModel.getAllBugets(1).observe(this, new Observer<APIResponse<GetBudgetResponse>>() {
+        viewModel.getAllBugets(tokenService.getLoggedInUser().getId()).observe(this, new Observer<APIResponse<GetBudgetResponse>>() {
             @Override
             public void onChanged(APIResponse<GetBudgetResponse> apiResponse) {
                 runOnUiThread(new Runnable() {

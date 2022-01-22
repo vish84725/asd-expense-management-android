@@ -160,7 +160,7 @@ public class TransactionsActivity extends AppCompatActivity implements Transacti
         }else if(mTransactionTypeFlag == TransactionType.Expense){
             transactionType = "EXPENSE";
         }
-        viewModel.getAllTransactions(1,transactionType).observe(this, new Observer<APIResponse<TransactionResponse>>() {
+        viewModel.getAllTransactions(tokenService.getLoggedInUser().getId(),transactionType).observe(this, new Observer<APIResponse<TransactionResponse>>() {
             @Override
             public void onChanged(APIResponse<TransactionResponse> apiResponse) {
                 runOnUiThread(new Runnable() {

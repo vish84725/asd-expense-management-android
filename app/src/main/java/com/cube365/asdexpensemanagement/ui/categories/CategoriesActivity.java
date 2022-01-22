@@ -119,7 +119,7 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesA
     }
 
     private void setCategoriesData(){
-        viewModel.getAllCategories(1).observe(this, new Observer<APIResponse<GetCategoryResponse>>() {
+        viewModel.getAllCategories(tokenService.getLoggedInUser().getId()).observe(this, new Observer<APIResponse<GetCategoryResponse>>() {
             @Override
             public void onChanged(APIResponse<GetCategoryResponse> apiResponse) {
                 runOnUiThread(new Runnable() {

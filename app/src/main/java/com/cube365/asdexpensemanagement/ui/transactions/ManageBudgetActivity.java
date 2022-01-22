@@ -141,7 +141,7 @@ public class ManageBudgetActivity extends AppCompatActivity {
     }
 
     private void setCategoriesData(){
-        categoriesViewModel.getAllCategories(1).observe(this, new Observer<APIResponse<GetCategoryResponse>>() {
+        categoriesViewModel.getAllCategories(tokenService.getLoggedInUser().getId()).observe(this, new Observer<APIResponse<GetCategoryResponse>>() {
             @Override
             public void onChanged(APIResponse<GetCategoryResponse> apiResponse) {
                 runOnUiThread(new Runnable() {
@@ -215,7 +215,7 @@ public class ManageBudgetActivity extends AppCompatActivity {
         try{
             Double amount = Double.parseDouble(mAmountEditText.getText().toString());
             GetUserResponse user = new GetUserResponse();
-            user.setId(1);
+            user.setId(tokenService.getLoggedInUser().getId());
             GetCategoryResponse category = new GetCategoryResponse();
             category.setId(mSelectedCategory.getId());
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");

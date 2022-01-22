@@ -126,7 +126,7 @@ public class AddCategoryActivity extends AppCompatActivity {
     private CreateCategoryPostRequest getCreateRequest(){
         try{
             GetUserResponse user = new GetUserResponse();
-            user.setId(1);
+            user.setId(tokenService.getLoggedInUser().getId());
             return new CreateCategoryPostRequest(mCategoryTextField.getText().toString(),"", user);
         }catch (Exception ex){
             return null;
